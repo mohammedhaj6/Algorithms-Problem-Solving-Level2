@@ -21,6 +21,7 @@ int readDigit() {
 void CountDigitFrequency(int digit, int num) {
 	int remainder,counter = 0;
 	
+
 	while (num > 0) {
 		
 		remainder = num % 10;
@@ -31,7 +32,7 @@ void CountDigitFrequency(int digit, int num) {
 		
 
 	}
-	cout << "Digit " << digit << " is " << counter << " Times(s)\n";
+	cout << "Digit " << digit <<" Frequency is "  << counter << " Times(s)\n";
 }
 
 int main() {
