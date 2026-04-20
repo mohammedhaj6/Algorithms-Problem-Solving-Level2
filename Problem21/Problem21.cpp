@@ -1,20 +1,137 @@
-// Problem21.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include<string>
+#include<cmath>
+
+using namespace std;
+
+short readInput() {
+    short num;
+    cout << "Enter How Many Keys To Generate ?\n";
+    cin >> num;
+    cout << endl;
+    return num;
+}
+
+
+int randomNumber(int from, int to) {
+    int num = rand() % (to - from + 1) + from;
+    return num;
+}
+
+enum enCharType
+{
+    smallLetter = 1, capitalLetter = 2, specialCharacter = 3, digit = 4
+
+};
+
+
+char printRandomCharacter(enCharType charType) {
+
+    switch (charType) {
+    case enCharType::smallLetter: {
+        return char(randomNumber(97, 122));
+        break;
+    }
+    case enCharType::capitalLetter: {
+        return char(randomNumber(65, 90));
+        break;
+    }
+    case enCharType::specialCharacter: {
+        return char(randomNumber(33, 47));
+        break;
+    }
+    case enCharType::digit: {
+        return char(randomNumber(48, 57));
+        break;
+    }
+    }
+
+}
+
+
+string generateWord(enCharType charType ,short length) {
+
+    string word = "";
+
+    for (int i = 1; i <= length; i++)
+    {
+
+        word = word + printRandomCharacter(charType);
+
+    }
+    return word;
+
+}
+
+string generateKey() {
+
+    string key = "";
+    key = key + generateWord(enCharType::capitalLetter,4)+"-";
+    key = key + generateWord(enCharType::capitalLetter, 4) + "-";
+    key = key + generateWord(enCharType::capitalLetter, 4) + "-";
+    key = key + generateWord(enCharType::capitalLetter, 4);
+    return key;
+}
+
+void generateKeys(short numberOfKeys) {
+
+    for (int i = 1; i <= numberOfKeys; i++) {
+        cout << "Key" << "[" << i << "]"<<": ";
+        cout << generateKey();
+        cout << endl;2
+    }
+       
+}
+
+
+
+
+
+
+
+
+
+//int randomNumber(int from, int to) {
+//    int num = rand() % (to - from + 1) + from;
+//    return num;
+//}
+//
+//char getKeys() {
+//    return char(randomNumber(65, 90));
+//}
+//
+//void printKeys(int num) {
+//   
+//    for (int i = 1; i <= num; i++)
+//    { 
+//        cout << "Key" <<"["<< i <<"]" << ":";
+//        for (int k = 0; k < 4; k++)
+//        {
+//            for (int j = 0; j < 4; j++)
+//            {
+//                cout << getKeys();
+//            }
+//            if (k == 3) {
+//                break;
+//            }
+//            cout << "-";
+//        }
+//        cout << endl;
+//         
+//    }
+//
+//
+// }
+
+
+
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    srand(time(0));
+    generateKeys(readInput());
+   /* printKeys(readInput());*/
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
