@@ -22,6 +22,7 @@ void cheakTheNumberFrequancyInsideArray(int arr[],int length) {
     int num;
     cout << "Enter The Number You Want To Cheak : \n";
     cin >> num;
+    cout << endl;
 
     int counter = 0;
     for (int i = 1; i <= length; i++) {
@@ -29,16 +30,17 @@ void cheakTheNumberFrequancyInsideArray(int arr[],int length) {
             counter++;
            }
     }
-    cout << num << " Is Repeated " << counter << " Time(s)\n";
+    cout << num << " Is Repeated " << counter << " Time(s)\n\n";
 
 }
 
 void printArrayElements(int arr[],int length) {
 
-    cout << "Array Elements: ";
+    cout << "\nArray Elements: ";
     for (int i = 1; i <= length; i++) {
         cout << arr[i] << " ";
     }
+    cout << endl;
 }
 
 
