@@ -1,0 +1,59 @@
+#include <iostream>
+#include<string>
+#include<cmath>
+
+using namespace std;
+
+int randomNumber(int from, int to) {
+    int num = rand() % (to - from + 1) + from;
+    return num;
+}
+
+int readNumber() {
+    int length;
+    cout << "Enter The Length You Need Store in The  Array?\n";
+    cin >> length;
+    return length;
+}
+
+void fillTheArrayWithRandomNumber(int arr[100], int length) {
+
+    for (int i = 0; i <= length - 1; i++) {
+        arr[i] = randomNumber(1, 100);
+    }
+}
+
+void printArray(int arr[100], int length) {
+
+    cout << "\nArray Elements : ";
+
+    for (int i = 0; i < length; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void getSumNumberInArray(int arr[100], int length) {
+    int sumNumbers = 0;
+    for (int i = 0; i < length; i++)
+    {
+        sumNumbers+=arr[i];
+
+    }
+
+    cout << endl;
+    cout << "Sum Of Numbers :" << sumNumbers << endl;
+
+}
+
+int main()
+{
+    srand(time(0));
+    int length = readNumber();
+    int myArray[100];
+    fillTheArrayWithRandomNumber(myArray, length);
+    printArray(myArray, length);
+    getSumNumberInArray(myArray, length);
+}
+

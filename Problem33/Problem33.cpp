@@ -49,7 +49,7 @@ char printRandomCharacter(enCharType charType) {
 }
 
 
-string generateWord(enCharType charType ,short length) {
+string generateWord(enCharType charType, short length) {
 
     string word = "";
 
@@ -66,73 +66,39 @@ string generateWord(enCharType charType ,short length) {
 string generateKey() {
 
     string key = "";
-    key = key + generateWord(enCharType::capitalLetter,4)+"-";
+    key = key + generateWord(enCharType::capitalLetter, 4) + "-";
     key = key + generateWord(enCharType::capitalLetter, 4) + "-";
     key = key + generateWord(enCharType::capitalLetter, 4) + "-";
     key = key + generateWord(enCharType::capitalLetter, 4);
     return key;
 }
 
-void generateKeys(short numberOfKeys) {
 
-    for (int i = 1; i <= numberOfKeys; i++) {
-        cout << "Key" << "[" << i << "]"<<": ";
-        cout << generateKey();
-        cout << endl;
-    }
+
+void fillTheArrayWithRandomNumber(string arr[100], int length) {
+
+    for (int i = 0; i <= length - 1; i++) {
        
+        arr[i] = generateKey();
+    }
 }
+void printArray(string arr[100], int length) {
 
+   
 
-
-
-
-
-
-
-
-//int randomNumber(int from, int to) {
-//    int num = rand() % (to - from + 1) + from;
-//    return num;
-//}
-//
-//char getKeys() {
-//    return char(randomNumber(65, 90));
-//}
-//
-//void printKeys(int num) {
-//   
-//    for (int i = 1; i <= num; i++)
-//    { 
-//        cout << "Key" <<"["<< i <<"]" << ":";
-//        for (int k = 0; k < 4; k++)
-//        {
-//            for (int j = 0; j < 4; j++)
-//            {
-//                cout << getKeys();
-//            }
-//            if (k == 3) {
-//                break;
-//            }
-//            cout << "-";
-//        }
-//        cout << endl;
-//         
-//    }
-//
-//
-// }
-
-
-
-
-
-
+    for (int i = 0; i < length; i++)
+    {
+        cout << "Key" << "[" << i << "]" << ": ";
+        cout << arr[i] <<endl;
+    }
+    cout << endl;
+}
 int main()
 {
     srand(time(0));
-    generateKeys(readInput());
-
-   /* printKeys(readInput());*/
+    int length =  readInput();
+    string arr[100];
+    fillTheArrayWithRandomNumber(arr, length);
+    printArray(arr, length);
 }
 
