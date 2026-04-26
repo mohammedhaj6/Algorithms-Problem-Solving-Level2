@@ -1,12 +1,19 @@
 #include <iostream>
 #include<string>
 #include<cmath>
+#include <ctime>
 
 using namespace std;
 
 int randomNumber(int from, int to) {
     int num = rand() % (to - from + 1) + from;
     return num;
+}
+void AddArrayElement(int num, int arr[100], int& length)
+{
+    
+    arr[length] = num;
+    length++;
 }
 
 int readNumber() {
@@ -16,14 +23,14 @@ int readNumber() {
     return length;
 }
 
-void fillTheArrayWithRandomNumber(int arr[], int length) {
+void fillTheArrayWithRandomNumber(int arr[100], int& length) {
 
     for (int i = 0; i <= length - 1; i++) {
         arr[i] = randomNumber(1, 100);
     }
 }
 
-void printArray(int arr[], int length) {
+void printArray(int arr[100], int length) {
 
     cout << "\nArray Elements : ";
 
@@ -33,42 +40,41 @@ void printArray(int arr[], int length) {
     }
     cout << endl;
 }
+void fillOddNumbersInCopyArray(int newArray[100], int arr[100], int length, int& length2) {
 
-
-
-void SearchNumber(int arr[],int length) {
-    int num;
-    cout << "\nPlease Enter A Number To Search For? \n";
-    cin >> num;
-    bool found = false;
+    length2 = 0;
     for (int i = 0; i < length; i++)
     {
-        if (num == arr[i]) {
-
-            cout << "\nNumber You Are Looking For Is :" << num << endl;
-            cout << "\nThe Number Found At Position :" << i << endl;
-            cout << "\nThe Number Found Its Order :" << i + 1 << endl;
-            found = true;
-            break;
+        if (arr[i] % 2 != 0) {
+            AddArrayElement(arr[i], newArray, length2);
         }
-
-       
-         
     }
 
-    if (!found) {
-        cout << "\nThe Number Is Not Found !\n";
-    }
-    
 }
+
+void printCopyArray(int newArray[100], int length2) {
+    cout << "\nCopy Array Elements : ";
+
+    for (int i = 0; i < length2; i++)
+    {
+        cout << newArray[i] << " ";
+    }
+    cout << endl;
+}
+
+
 
 int main()
 {
     srand(time(0));
     int length = readNumber();
+    int length2 = 0 ;
     int myArray[100];
     fillTheArrayWithRandomNumber(myArray, length);
     printArray(myArray, length);
-    SearchNumber(myArray, length);
+    int newArray[100];
+    fillOddNumbersInCopyArray(newArray, myArray, length, length2);
+    printCopyArray(newArray, length2);
+
 }
 

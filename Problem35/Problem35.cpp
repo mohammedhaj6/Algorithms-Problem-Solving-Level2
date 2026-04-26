@@ -36,7 +36,7 @@ void printArray(int arr[], int length) {
 
 
 
-void SearchNumber(int arr[],int length) {
+void SearchNumber(int arr[], int length) {
     int num;
     cout << "\nPlease Enter A Number To Search For? \n";
     cin >> num;
@@ -52,14 +52,14 @@ void SearchNumber(int arr[],int length) {
             break;
         }
 
-       
-         
+
+
     }
 
     if (!found) {
         cout << "\nThe Number Is Not Found !\n";
     }
-    
+
 }
 
 int main()
